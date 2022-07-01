@@ -14,16 +14,15 @@ const routes = [{
             import ('../views/Customers.vue')
     },
     {
-        path: '/customer/0',
-        name: 'customer-details',
-        component: () =>
-            import ('../views/Customers.vue')
-    },
-    {
         path: '/customer/:id',
         name: 'customer-details',
         component: () =>
-            import ('../views/CustomerDetails.vue')
+            import ('../views/CustomerDetails.vue'),
+        beforeEnter: (to, from) => {
+            if (to.params.id == 0) {
+                return { path: '/customer', name: 'customer' }
+            }
+        }
     },
     {
         path: '/blog',
@@ -35,7 +34,12 @@ const routes = [{
         path: '/blog/:id',
         name: 'blog-details',
         component: () =>
-            import ('../views/BlogsDetails.vue')
+            import ('../views/BlogsDetails.vue'),
+        beforeEnter: (to, from) => {
+            if (to.params.id == 0) {
+                return { path: '/blog', name: 'blog' }
+            }
+        }
     },
     {
         path: '/:pathMatch(.*)*',

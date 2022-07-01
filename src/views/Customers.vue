@@ -1,9 +1,11 @@
 <template>
   <div class="customers">
-    <div v-for="customer in customers" :key="customer.id">
-      <router-link :to="`/customer/${customer.id}`">{{
-        customer.name
-      }}</router-link>
+    <div v-for="customer in customers" :key="customer.id" class="box">
+      <h3 class="custom">
+        <router-link :to="`/customer/${customer.id}`">{{
+          customer.name
+        }}</router-link>
+      </h3>
     </div>
   </div>
 </template>
@@ -43,5 +45,17 @@ export default {
 a {
   text-decoration: none;
   color: #2c3e50;
+}
+.box {
+  display: flex;
+  justify-content: center;
+}
+.custom {
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: rgb(27, 198, 130);
+  width: 300px;
+  text-align: center;
+  border-radius: 4px;
 }
 </style>
